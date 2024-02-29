@@ -1,10 +1,8 @@
 import socket
 from .errors import PreconditionError, SendingError, RecivingError
-from threading import Thread
 from typing import Optional
 from Crypto.PublicKey import RSA
 from Crypto.Cipher import PKCS1_OAEP
-import ssl
 
 class ServerAFTP:
     def __init__(self, conn: socket.socket, addr: tuple, file: str, debug: Optional[bool] = False) -> None:
