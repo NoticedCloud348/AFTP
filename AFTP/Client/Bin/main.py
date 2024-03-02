@@ -33,10 +33,10 @@ class ClientAFTP:
                 data: bytes = file.read(128)
                 if not data:
                     break
-                encrypted_data = self.__ServerCipher.encrypt(data)
+                encrypted_data: bytes = self.__ServerCipher.encrypt(data)
                 self.__conn.sendall(encrypted_data)
                 self.Debug("[+] Package sent to the server")
-                print(self.__conn.recv(1024).decode())
+                self.__conn.recv(1024).decode()
     
     def Send(self) -> str:
         try:
@@ -49,11 +49,11 @@ class ClientAFTP:
         try:
             with open(self.__file, 'wb') as file:
                 while True:
-                    encrypted_data = self.__conn.recv(4096)
+                    encrypted_data: bytes = self.__conn.recv(4096)
                     if not encrypted_data:
                         break
                     print(encrypted_data)
-                    data = self.__cipher.decrypt(encrypted_data)
+                    data: bytes = self.__cipher.decrypt(encrypted_data)
                     file.write(data)
                     self.Debug("[+] Data written to file")
                     self.__conn.send("data written".encode())
