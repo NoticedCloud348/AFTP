@@ -16,3 +16,6 @@ class AFTPWarnings(UserWarning):
     This warning is made by Zelabs, please consider to fix the warning.
     {str(cls).replace("<class '", "").replace("'>", ":")} {warning}"""
         return Message
+
+class DebugMessageWarning(AFTPWarnings):
+    pass

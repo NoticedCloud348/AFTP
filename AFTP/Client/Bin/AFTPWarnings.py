@@ -14,5 +14,8 @@ class AFTPWarnings(UserWarning):
         ) -> str:
         Message: str = f"""Warning (AFTP):
     This warning is made by Zelabs, please consider to fix the warning.
-    {str(cls).replace("<class '__main__.", "").replace("<class 'AFTPWarnings.", "").replace("'>", ":").replace("<class 'AFTP.Server.Bin.AFTPWarnings.", "")} {warning}"""
+    {str(cls).replace("<class '", "").replace("'>", ":")} {warning}"""
         return Message
+
+class DebugMessageWarning(AFTPWarnings):
+    pass
